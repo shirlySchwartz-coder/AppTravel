@@ -1,5 +1,5 @@
 
--- CREATE DATABASE IF NOT EXISTS tor_web_db;
+CREATE DATABASE IF NOT EXISTS tor_web_db;
 
 -- CREATE USER 'tor'@'localhost' IDENTIFIED BY 'torapp';
 -- GRANT ALL PRIVILEGES ON * . * TO 'tor'@'localhost';
@@ -7,20 +7,22 @@
  
 CREATE TABLE IF NOT EXISTS tor_web_db.users (
         userID INT AUTO_INCREMENT PRIMARY KEY,
-        name varchar(200) NOT NULL,
-        email varchar(200) NOT NULL UNIQUE,
-        password char(100) NOT NULL,
-        isAdmin boolean DEFAULT 0 
+        firstName CHAR(100) NOT NULL,
+        lastName CHAR(100) NOT NULL,
+        userName CHAR(200) NOT NULL UNIQUE,
+        uPassword CHAR(100) NOT NULL,
+        isAdmin BOOLEAN DEFAULT 0 
         );
 
 CREATE TABLE IF NOT EXISTS tor_web_db.vacations(
-	vacID INT AUTO_INCREMENT PRIMARY KEY, 
-    details text(500) NOT NULL, 
-    destination varchar(255) NOT NULL, 
-    pictureSrc varchar(255) , 
-    startVac date,  
-    endVac date,
-    folowers int  
+	vacID 	INT AUTO_INCREMENT PRIMARY KEY, 
+    vacDesc TEXT(500) NOT NULL, 
+    vacTarget CHAR(100) NOT NULL, 
+    vacPic 	CHAR(255) , 
+    vacStart DATETIME,  
+    vacEnd DATETIME ,
+    vacPrice INT NOT NULL,
+    vacFolowers INT  
 );
 CREATE TABLE IF NOT EXISTS tor_web_db.vacFolower(
 	vacID INT PRIMARY KEY, 
